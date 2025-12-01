@@ -42,10 +42,8 @@ abstract class AbstractSolution
 
     /**
      * Load input file.
-     *
-     * @return void
      */
-    public function loadInput()
+    public function loadInput(): void
     {
         if ($this->test) {
             $file_name = $this->test_input_file_name;
@@ -89,5 +87,5 @@ abstract class AbstractSolution
     /**
      * Run puzzle solution.
      */
-    abstract public function run(): string;
+    abstract public function __invoke(): string;
 }

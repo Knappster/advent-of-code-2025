@@ -39,18 +39,16 @@ class App
     /**
      * Run selected solution solution.
      */
-    public function run(): void
+    public function __invoke(): void
     {
         $fqcn = 'Knappster\\AdventOfCode\\Solutions'
             . '\\Puzzle_' . $this->day
             . '\\Part_' . $this->part;
 
         try {
-            if (class_exists($fqcn)) {
-                /** @var AbstractSolution $solution */
-                $solution = new $fqcn($this->test);
+            if (class_exists($fqcn) && method_exists($fqcn, '__invoke')) {
                 $this->start_time = microtime(true);
-                $answer = $solution->run();
+                $answer = new $fqcn($this->test)();
                 $this->end_time = microtime(true);
                 $this->output($answer);
             } else {

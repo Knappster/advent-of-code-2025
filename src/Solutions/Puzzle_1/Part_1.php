@@ -13,7 +13,7 @@ class Part_1 extends AbstractSolution
 {
     public string $test_input_file_name = 'test-input.txt';
 
-    public function run(): string
+    public function __invoke(): string
     {
         $this->init();
 
