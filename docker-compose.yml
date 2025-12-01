@@ -1,0 +1,36 @@
+name: advent-of-code
+
+services:
+  aoc:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+
+  composer:
+    profiles: ["composer"]
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    entrypoint: ["composer"]
+    command: ["--version"]
+    volumes:
+      - ./:/app
+
+  pint:
+    profiles: ["pint"]
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    entrypoint: ["/app/vendor/bin/pint"]
+    volumes:
+      - ./:/app
+
+  phpstan:
+    profiles: ["phpstan"]
+    image: ghcr.io/phpstan/phpstan:2-php8.4
+    command: ["analyse", "-c", "phpstan.neon", "--memory-limit", "1G"]
+    volumes:
+      - ./:/app

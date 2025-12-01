@@ -1,0 +1,32 @@
+# https://taskfile.dev
+
+version: "3"
+
+silent: false
+
+tasks:
+  image-build:
+    cmds:
+      - docker compose --profile "*" build {{.CLI_ARGS}}
+
+  composer:
+    cmds:
+      - docker compose run -it --rm composer {{.CLI_ARGS}}
+
+  pint:
+    cmds:
+      - 'docker compose run -it --rm pint {{.CLI_ARGS}}'
+
+  phpstan:
+    cmds:
+      - 'docker compose run -it --rm phpstan'
+
+  aoc:
+    cmds:
+     - docker compose run -it --rm aoc {{.CLI_ARGS}}
+
+  setup:
+    cmds:
+      - task: image-build
+      - task: composer:setup
+      - task: client:setup

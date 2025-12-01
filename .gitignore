@@ -1,0 +1,4 @@
+!.gitignore
+/vendor
+/src/Solutions/*/input/*
+!/src/Solutions/*/input/.gitkeep
