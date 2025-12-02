@@ -67,7 +67,7 @@ class App
      */
     private function output(string $answer = ''): void
     {
-        $title = '<green>Advent of Code 2023:</green> Day ' . $this->day . ' - Part ' . $this->part;
+        $title = '<green>Advent of Code:</green> Day ' . $this->day . ' - Part ' . $this->part;
         $climate = new CLImate;
         $climate->bold()->out($title);
         $climate->border();
