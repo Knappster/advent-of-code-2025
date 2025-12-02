@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Knappster\AdventOfCode\Solutions;
 
 use Closure;
+use Exception;
+use ReflectionClass;
 use SplFileObject;
 
 /**
@@ -22,13 +24,13 @@ abstract class AbstractSolution
 
     public function __construct(public bool $test = false)
     {
-        $class_ref = new \ReflectionClass(get_class($this));
+        $class_ref = new ReflectionClass(get_class($this));
         $class_file_path = $class_ref->getFileName();
 
         if ($class_file_path !== false) {
             $this->solution_path = dirname($class_file_path);
         } else {
-            throw new \Exception("Can't get class directory!");
+            throw new Exception("Can't get class directory!");
         }
     }
 
@@ -48,7 +50,7 @@ abstract class AbstractSolution
         if (file_exists($file_path)) {
             $this->input = new SplFileObject($file_path);
         } else {
-            throw new \Exception("Can't find input file!");
+            throw new Exception("Can't find input file!");
         }
     }
 

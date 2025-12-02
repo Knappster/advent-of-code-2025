@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Knappster\AdventOfCode;
 
-use Knappster\AdventOfCode\Solutions\AbstractSolution;
+use Exception;
 use League\CLImate\CLImate;
 
 /**
@@ -28,7 +28,7 @@ class App
     public function __construct(array $args)
     {
         if (count($args) < 3) {
-            throw new \Exception('Not enough arguments! Need puzzle and part number.');
+            throw new Exception('Not enough arguments! Need puzzle and part number.');
         }
 
         $this->day = $args[1];
@@ -52,9 +52,9 @@ class App
                 $this->end_time = microtime(true);
                 $this->output($answer);
             } else {
-                throw new \Exception('Puzzle class missing!: ' . $fqcn);
+                throw new Exception('Puzzle class missing!: ' . $fqcn);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $climate = new CLImate;
             $climate->bold()->red()->out($e->getMessage());
             $climate->border();
