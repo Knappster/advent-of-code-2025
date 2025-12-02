@@ -32,6 +32,8 @@ abstract class AbstractSolution
         } else {
             throw new Exception("Can't get class directory!");
         }
+
+        $this->loadInput();
     }
 
     /**

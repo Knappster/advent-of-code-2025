@@ -15,8 +15,6 @@ class Part_2 extends AbstractSolution
 
     public function __invoke(): string
     {
-        $this->loadInput();
-
         return (string) $this->processInputs(function (
             string $line,
             int $last_result

@@ -18,8 +18,6 @@ class Part_2 extends AbstractSolution
         $pointer = 50;
         $mod = 100;
 
-        $this->loadInput();
-
         return (string) $this->processInputs(function (
             string $line,
             int $last_result
