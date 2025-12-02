@@ -33,17 +33,9 @@ abstract class AbstractSolution
     }
 
     /**
-     * Init solution.
-     */
-    public function init(): void
-    {
-        $this->loadInput();
-    }
-
-    /**
      * Load input file.
      */
-    public function loadInput(): void
+    protected function loadInput(): void
     {
         if ($this->test) {
             $file_name = $this->test_input_file_name;
@@ -65,7 +57,7 @@ abstract class AbstractSolution
      *
      * @param  Closure(string, int): int  $callback
      */
-    public function processInputs(callable $callback): int
+    protected function processInputs(callable $callback): int
     {
         $total = 0;
         $last_result = 0;

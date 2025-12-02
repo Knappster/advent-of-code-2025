@@ -15,10 +15,10 @@ class Part_2 extends AbstractSolution
 
     public function __invoke(): string
     {
-        $this->init();
-
         $pointer = 50;
         $mod = 100;
+
+        $this->loadInput();
 
         return (string) $this->processInputs(function (
             string $line,
